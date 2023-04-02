@@ -9,9 +9,11 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { HeaderComponent } from './components/header/header.component';
+import { DemoModule } from './pages/demo/demo.module';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, HeaderComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -23,11 +25,13 @@ import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
       messagingSenderId: '919145805120',
       appId: '1:919145805120:web:92876ab82b116dd252f6a5',
       measurementId: 'G-NY1NM3RVKG',
-    }),
+    }
+    ),
     AngularFireAuthModule,
     AngularFirestoreModule,
     AngularFireStorageModule,
     AngularFireDatabaseModule,
+    DemoModule
   ],
   providers: [],
   bootstrap: [AppComponent],
