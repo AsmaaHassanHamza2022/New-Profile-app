@@ -4,3 +4,14 @@
 <div  style="width:50% ;margin:10px auto" class="section">
     <input class="app-input" />
 </div>
+
+<custom-button> ffff</custom-button>
+
+
+
+<form  style="width:50% ;margin:10px auto" [formGroup]="form">
+    <input-field [controlName]="'name'" [isRequired]="true" [patternError]="regexErrors.email" [control]="f('name')">
+    <custom-input [hasError]="f('name').errors ? true : false" formControlName="name"></custom-input>
+    </input-field>
+
+</form>

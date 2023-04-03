@@ -1,0 +1,21 @@
+<div class="form-control" [class.form-field_error]="hasError()">
+    <div class="input_label">{{controlName}}  <span class="required_Field" *ngIf="isRequired">*</span></div>
+    <div class="input">
+        <ng-content></ng-content>
+    </div>
+    <div class="validation-message">
+        <ng-container *ngIf="control && control.errors && errorKey" [ngSwitch]="errorKey">
+            <span class="input_validation_error" *ngSwitchCase="'min'">Minimum {{control.errors[errorKey].max }}</span>
+            <span class="input_validation_error" *ngSwitchCase="'max'">Maximum {{control.errors[errorKey].max}}</span>
+            <span class="input_validation_error" *ngSwitchCase="'required'">This field is required</span>
+            <span class="input_validation_error" *ngSwitchCase="'requiredTrue'">This field is required</span>
+            <span class="input_validation_error" *ngSwitchCase="'minlength'">At least {{control.errors[errorKey].requiredLength}} characters</span>
+            <span class="input_validation_error" *ngSwitchCase="'maxlength'">No more than {{control.errors[errorKey].requiredLength}}
+                characters</span>
+            <span class="input_validation_error" *ngSwitchCase="'pattern'">
+                <span class="input_validation_error" *ngIf="patternError">{{patternError}}</span>
+                <span class="input_validation_error" *ngIf="!patternError">Pattern does not match</span>
+            </span>
+        </ng-container>
+    </div>
+</div>
