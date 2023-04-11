@@ -19,15 +19,15 @@ export class InputComponent implements OnInit, ControlValueAccessor {
 
   @Input() placeholder: string='';
   @Input() hasError:boolean=false;
-  @Output() changed = new EventEmitter<string>();
+  @Output() changed = new EventEmitter<string|any>();
 
   constructor() {}
   ngOnInit(): void {}
 
-  private propagateChange: any = () => { };
-  private propagateTouched: any = () => { };
+  public propagateChange: any = () => { };
+  public propagateTouched: any = () => { };
 
-  writeValue(value: string): void {
+  writeValue(value: string|any): void {
       this.value = value;
   }
 

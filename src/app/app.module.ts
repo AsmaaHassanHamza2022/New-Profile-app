@@ -10,13 +10,27 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { HeaderComponent } from './components/header/header.component';
-import { DemoModule } from './pages/demo/demo.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatNativeDateModule, MatDateFormats, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 
+const APP_DATE_FORMATS: MatDateFormats = {
+    parse: {
+        dateInput: { day: 'numeric', month: 'numeric', year: 'numeric' },
+    },
+    display: {
+        dateInput: { day: 'numeric', month: 'short', year: 'numeric' },
+        monthYearLabel: { year: 'numeric', month: 'short' },
+        dateA11yLabel: { year: 'numeric', month: 'long', day: 'numeric' },
+        monthYearA11yLabel: { year: 'numeric', month: 'long' }
+    }
+};
 @NgModule({
   declarations: [AppComponent, HeaderComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
+  
+    BrowserAnimationsModule,
     AngularFireModule.initializeApp({
       apiKey: 'AIzaSyAnNFw1Kkvg0edhMfBs_2Me_cbYqtoK_a0',
       authDomain: 'my-profile-app-f98bf.firebaseapp.com',
@@ -25,15 +39,20 @@ import { DemoModule } from './pages/demo/demo.module';
       messagingSenderId: '919145805120',
       appId: '1:919145805120:web:92876ab82b116dd252f6a5',
       measurementId: 'G-NY1NM3RVKG',
+     
     }
     ),
     AngularFireAuthModule,
     AngularFirestoreModule,
     AngularFireStorageModule,
     AngularFireDatabaseModule,
-    DemoModule
+    MatNativeDateModule
+    
   ],
-  providers: [],
+  providers: [
+    { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
+    { provide: MAT_DATE_FORMATS, useValue: APP_DATE_FORMATS }
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

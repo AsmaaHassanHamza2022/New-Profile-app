@@ -1,3 +1,4 @@
+@import '../colors.scss';
 .app-input {
     width: 100%;
     border-radius: 5px;
@@ -18,7 +19,7 @@
     }
 
     &.invalid_Input{
-        border: 1px solid red;
+        border: 1px solid $error;
     }
     &.valid_Input{
         border: 1px solid rgba(0, 0, 0, .25);
@@ -27,7 +28,7 @@
 }
 
 .required_Field{
-    color:rgb(230, 12, 12) ;
+    color:$error ;
 }
 .input_label{
     margin:10px 0px;
@@ -37,6 +38,6 @@
     display:inline-block;
     font-size:14px;
     margin:3px 0px;
-    color:tomato;
+    color:$error;
     
 }

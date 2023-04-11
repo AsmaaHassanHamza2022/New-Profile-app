@@ -1,7 +1,7 @@
 <a class="app-a">hello</a>
 
 <button class="app-button">btton-1</button>
-<div  style="width:50% ;margin:10px auto" class="section">
+<div style="width:50% ;margin:10px auto" class="section">
     <input class="app-input" />
 </div>
 
@@ -9,9 +9,29 @@
 
 
 
-<form  style="width:50% ;margin:10px auto" [formGroup]="form">
+<form style="width:50% ;margin:10px auto" [formGroup]="form">
     <input-field [controlName]="'name'" [isRequired]="true" [patternError]="regexErrors.email" [control]="f('name')">
-    <custom-input [hasError]="f('name').errors ? true : false" formControlName="name"></custom-input>
+        <custom-input [hasError]="f('name').errors ? true : false" formControlName="name"></custom-input>
+    </input-field>
+    <input-field [controlName]="'item'" [isRequired]="true" [control]="form.controls['item']">
+        <select-box [items]="items" formControlName="item"></select-box>
+    </input-field>
+    <!-- <input-password></input-password> -->
+    <!-- <mat-select>
+        <mat-option>red2</mat-option>
+        <mat-option>red3</mat-option>
+        <mat-option>red4</mat-option>
+        <mat-option>red5</mat-option>
+    </mat-select> -->
+
+    <input-field [controlName]="'date'" [isRequired]="true" [control]="form.controls['date']">
+        <date-picker [max]="today" [placeholder]="'select date'" formControlName="date"></date-picker>
     </input-field>
 
+    <input-field [controlName]="'range-date'" [isRequired]="true" [control]="form.controls['rangeDate']">
+    <date-picker-range  formControlName="rangeDate"></date-picker-range>
+    </input-field>
+
+    <p>{{form.controls['rangeDate'].value |json}}</p>
 </form>
+

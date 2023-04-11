@@ -21,7 +21,6 @@ export class InputFieldComponent implements OnInit  {
   }
 
   get errorKey(){
-    console.log(this.control ,this.control && this.control.errors && Object.keys(this.control.errors)[0] );
     return this.control && this.control.errors && Object.keys(this.control.errors)[0] 
   }
 
