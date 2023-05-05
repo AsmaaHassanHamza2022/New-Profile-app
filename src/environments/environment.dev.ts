@@ -7,6 +7,11 @@ export const environment = {
         storageBucket: "my-profile-app-f98bf.appspot.com",
         messagingSenderId: "919145805120",
         appId: "1:919145805120:web:92876ab82b116dd252f6a5",
-        measurementId: "G-NY1NM3RVKG"
-      }
+        measurementId: "G-NY1NM3RVKG",
+        actionCodeSettings: {
+            url: 'http://localhost:4200/demo',
+            handleCodeInApp: true
+        }
+      },
+     
   };
