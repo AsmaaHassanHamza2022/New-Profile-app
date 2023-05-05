@@ -12,6 +12,11 @@ import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { HeaderComponent } from './components/header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatNativeDateModule, MatDateFormats, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
+import { StoreModule } from '@ngrx/store';
+import { effects, reducers } from './store';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from 'src/environments/environment';
 
 const APP_DATE_FORMATS: MatDateFormats = {
     parse: {
@@ -46,7 +51,22 @@ const APP_DATE_FORMATS: MatDateFormats = {
     AngularFirestoreModule,
     AngularFireStorageModule,
     AngularFireDatabaseModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+
+
+    StoreModule.forRoot(reducers, {
+      runtimeChecks: {
+          strictStateImmutability: true,
+          strictActionImmutability: true
+      }
+  }),
+  EffectsModule.forRoot(effects),
+
+  StoreDevtoolsModule.instrument({
+    maxAge: 25, // Retains last 25 states
+    logOnly: environment.production, // Restrict extension to log-only mode
+    autoPause: true, // Pauses recording actions and state changes when the extension window is not open
+  }),
     
   ],
   providers: [

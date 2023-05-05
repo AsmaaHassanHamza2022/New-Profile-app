@@ -9,6 +9,9 @@ import { DatePickerComponent } from './date-picker/date-picker.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { DatePickerRangeComponent } from './date-picker-range/date-picker-range.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AutoCompeletComponent } from './auto-compelet/auto-compelet.component';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { HighlightPipe } from './auto-compelet/pipes/highlight.pipe';
 
 
 
@@ -20,6 +23,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     SelectBoxComponent,
     DatePickerComponent,
     DatePickerRangeComponent,
+    AutoCompeletComponent,
+    HighlightPipe,
+    
     
     
     
@@ -28,7 +34,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     ReactiveFormsModule,
     MatSelectModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatAutocompleteModule
   ],
   exports:
   [InputComponent ,
@@ -37,6 +44,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     SelectBoxComponent ,
     MatSelectModule,
     DatePickerComponent,
-    DatePickerRangeComponent]
+    DatePickerRangeComponent,
+    AutoCompeletComponent]
 })
 export class ControlsModule { }

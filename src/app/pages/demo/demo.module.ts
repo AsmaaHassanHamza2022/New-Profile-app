@@ -6,6 +6,8 @@ import { DemoComponent } from './demo.component';
 import { ButtonsModule } from 'src/app/shared/components/buttons/buttons.module';
 import { ControlsModule } from 'src/app/shared/components/controls/controls.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { IndicatorsModule } from 'src/app/shared/components/indicators/indicators.module';
+import { FileUploadModule } from 'src/app/shared/components/file-upload/file-upload.module';
 
 
 @NgModule({
@@ -17,7 +19,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     DemoRoutingModule,
     ButtonsModule,
     ControlsModule,
-    ReactiveFormsModule
+    IndicatorsModule,
+    ReactiveFormsModule,
+    FileUploadModule
   ],
   exports:[
     DemoComponent

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ControlItem } from 'src/app/models/frontend';
 import { regexErrors } from 'src/app/shared/utilities/formValidationError';
+import { markFormGroupTouched } from 'src/app/shared/utilities/forms';
 import { regex } from 'src/app/shared/utilities/pattrens';
 
 @Component({
@@ -32,7 +33,7 @@ export class DemoComponent implements OnInit {
   ];
 
   this.form=this.fb.group({
-    name:["asmaa" ,[Validators.minLength(3),Validators.required ,Validators.pattern(regex.email)]],
+    name:["" ,[Validators.minLength(3),Validators.required ,Validators.pattern(regex.email)]],
     item:['',Validators.required],
     date:['',Validators.required],
     rangeDate:['']
@@ -42,6 +43,8 @@ export class DemoComponent implements OnInit {
 
   }
 
-  
+  markAsTouchded(){
+    markFormGroupTouched(this.form)
+  }
 
 }

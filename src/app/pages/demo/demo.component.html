@@ -1,14 +1,14 @@
-<a class="app-a">hello</a>
+<div class="wrapper">
+<!-- <spinner></spinner> -->
 
-<button class="app-button">btton-1</button>
+    <a class="app-a">hello</a>
+
+<button UploadFile class="app-button">Upload</button>
 <div style="width:50% ;margin:10px auto" class="section">
     <input class="app-input" />
 </div>
 
-<custom-button> ffff</custom-button>
-
-
-
+<custom-button (click)="markAsTouchded()"> mark form group toched </custom-button>
 <form style="width:50% ;margin:10px auto" [formGroup]="form">
     <input-field [controlName]="'name'" [isRequired]="true" [patternError]="regexErrors.email" [control]="f('name')">
         <custom-input [hasError]="f('name').errors ? true : false" formControlName="name"></custom-input>
@@ -32,6 +32,13 @@
     <date-picker-range  formControlName="rangeDate"></date-picker-range>
     </input-field>
 
+    <input-field [controlName]="'auto-compelet'" [isRequired]="true" [control]="form.controls['rangeDate']">
+    <auto-compelet [items]="items" formControlName="rangeDate"></auto-compelet>
+    </input-field>
+
+    
     <p>{{form.controls['rangeDate'].value |json}}</p>
 </form>
 
+
+</div>
