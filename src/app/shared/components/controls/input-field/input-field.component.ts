@@ -25,7 +25,7 @@ export class InputFieldComponent implements OnInit  {
   }
 
   hasError(){
-    return this.control &&this.control.invalid && this.control.touched
+    return this.control && this.control.invalid && this.control.touched
   }
 
 

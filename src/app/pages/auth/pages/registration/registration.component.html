@@ -1,0 +1,67 @@
+<div class="login-page">
+    <div class="container">
+      <div class="form-section">
+          <div class="content">
+              <div class="form-heading">
+                  <h3>
+                      Welcome , Create New Account
+                  </h3>
+                  <p>Enter Your Data , to create new account </p>
+              </div>
+            <form autocomplete="off"  [formGroup]="registrationForm">
+              <input-field
+                [controlName]="'email'"
+                [isRequired]="true"
+                [patternError]="regexErrors.email"
+                [control]="f('email')"
+              >
+                <custom-input
+                  [hasError]="f('email').errors && f('email').touched ? true : false"
+                  formControlName="email"
+                  placeholder="Enetr your Email"
+                ></custom-input>
+              </input-field>
+  
+              <input-field
+                [controlName]="'password'"
+                [isRequired]="true"
+                [patternError]="regexErrors.password"
+                [control]="f('password')"
+              >
+                <input-password 
+                [hasError]="f('password').errors &&  f('password').touched? true : false"
+                formControlName="password"
+                placeholder="Enetr your password"></input-password>
+              </input-field>
+
+              <input-field
+                [controlName]="'repeate Password'"
+                [isRequired]="true"
+                [patternError]="regexErrors.password"
+                [control]="f('repeatePassword')"
+              >
+                <input-password 
+                [hasError]="f('repeatePassword').errors &&  f('repeatePassword').touched? true : false"
+                formControlName="repeatePassword"
+                placeholder="Repeate your password"></input-password>
+                <div class="error" [class.error_active]="f('repeatePassword').touched && registrationForm.hasError('repeat')">
+                    Entered passwords don't match
+                </div>
+              </input-field>
+              
+  
+              <div class="actions">
+                  <button (click)="register()" class="custom-button">Sign Up</button>
+              </div>
+              
+            </form>
+          </div>
+      </div>
+      <div class="image-section"></div>
+    </div>
+  </div>
+  
+
+  <div *ngIf="loading$ |async" class="loading">
+    <spinner></spinner>
+  </div>

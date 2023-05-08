@@ -1,0 +1,97 @@
+@import "src/assets/styles/colors.scss";
+
+.login-page {
+  .container {
+    display: flex;
+    & > div {
+      width: 50%;
+      @media (max-width:992px){
+       width:100%;
+      }
+    }
+
+    .form-section {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      //   text-align: center;
+      .content {
+        .form-heading {
+          text-align: center;
+          h3 {
+            color: $primary-dark;
+            font-size: 24px;
+            margin-bottom: 5px;
+          }
+
+          p {
+            color: $primary-dark;
+            font-size: 14px;
+          }
+        }
+        width: 70%;
+        height: 60%;
+        // background-color: tomato;
+      }
+      ::ng-deep .input_label {
+        color: $primary-dark !important;
+      }
+
+      .actions {
+        display: flex;
+        justify-content: center;
+        margin: 30px 0px;
+
+        .custom-button {
+          width: 100%;
+          border-radius: 10px;
+          background-color: $primary-dark;
+          color: #fff;
+          padding: 10px 0px;
+          // &:hover {
+          //   background-color: #fff;
+          //   border: 1px solid $primary-dark;
+          //   color: $primary-dark;
+          // }
+        }
+
+       
+      }
+
+      .go-to-signup{
+        text-align: center;
+        h4{
+          color:$primary-dark;
+          font-size: 15px;
+          margin:10px 0px;
+          span{
+            color:$primary-light;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+
+    .image-section {
+      background-image: url("../../images/Auth-page.jpg");
+      background-size: 100% 100%;
+      height: 91vh;
+
+      @media (max-width:992px){
+        display: none;
+      }
+    }
+  }
+}
+
+
+.error {
+    opacity: 0;
+    font-size: 12px;
+    color: $error;
+    padding: 4px 0 16px 0;
+
+    &_active {
+        opacity: 1;
+    }
+}

@@ -1,6 +1,10 @@
 <div class="header">
     <div class="header__title">My Profile App</div>
     <div class="header__navigation">
+        <a class="app-a" *ngIf="!IsAuthorized" routerLink="/auth/login" routerLinkActive="app-a_active">Login</a>
+        <a class="app-a" *ngIf="!IsAuthorized" routerLink="/auth/register" routerLinkActive="app-a_active">Register</a>
+        <a class="app-a" *ngIf="IsAuthorized" (click)="signOut()" routerLinkActive="app-a_active">Logout</a>
+
         <a class="app-a" routerLink="demo" routerLinkActive="app-a_active">Demo</a>
     </div>
 </div>

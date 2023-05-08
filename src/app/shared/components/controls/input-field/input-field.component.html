@@ -1,9 +1,9 @@
-<div class="form-control" [class.form-field_error]="hasError()">
+<div class="form-field" [class.form-field_error]="hasError()">
     <div class="input_label">{{controlName}}  <span class="required_Field" *ngIf="isRequired">*</span></div>
     <div class="input">
         <ng-content></ng-content>
     </div>
-    <div class="validation-message">
+    <div class="form-field__error">
         <ng-container *ngIf="control && control.errors && errorKey" [ngSwitch]="errorKey">
             <span class="input_validation_error" *ngSwitchCase="'min'">Minimum {{control.errors[errorKey].max }}</span>
             <span class="input_validation_error" *ngSwitchCase="'max'">Maximum {{control.errors[errorKey].max}}</span>

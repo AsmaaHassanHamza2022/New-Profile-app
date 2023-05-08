@@ -1,2 +1,2 @@
-<header></header>
+<header [IsAuthorized]="isAuthorized |async" (SignOut)="logout()"></header>
 <router-outlet></router-outlet>

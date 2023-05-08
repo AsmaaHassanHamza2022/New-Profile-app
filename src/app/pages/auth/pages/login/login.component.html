@@ -1,0 +1,52 @@
+<div class="login-page">
+  <div class="container">
+    <div class="form-section">
+        <div class="content">
+            <div class="form-heading">
+                <h3>
+                    Welcome back 
+                </h3>
+                <p>Enter Your data</p>
+            </div>
+          <form autocomplete="off"  [formGroup]="loginForm">
+            <input-field
+              [controlName]="'email'"
+              [isRequired]="true"
+              [patternError]="regexErrors.email"
+              [control]="f('email')"
+            >
+              <custom-input
+                [hasError]="f('email').errors && f('email').touched ? true : false"
+                formControlName="email"
+                placeholder="Enetr your Email"
+              ></custom-input>
+            </input-field>
+
+            <input-field
+              [controlName]="'password'"
+              [isRequired]="true"
+              [patternError]="regexErrors.password"
+              [control]="f('password')"
+            >
+              <input-password 
+              [hasError]="f('password').errors &&  f('password').touched? true : false"
+              formControlName="password"
+              placeholder="Enetr your password"></input-password>
+            </input-field>
+
+            <div class="actions">
+                <button (click)="login()" class="custom-button">Login</button>
+            </div>
+            <div class="go-to-signup">
+              <h4>Need an Account ? <span [routerLink]="['/auth/register']">Create New Account</span></h4>
+            </div>
+          </form>
+        </div>
+    </div>
+    <div class="image-section"></div>
+  </div>
+</div>
+
+<div *ngIf="loading$ |async" class="loading">
+  <spinner></spinner>
+</div>
