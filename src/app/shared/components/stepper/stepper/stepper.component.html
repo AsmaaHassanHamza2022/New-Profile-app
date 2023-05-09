@@ -1,0 +1,33 @@
+<div class="stepper">
+  <div class="stepper-header">
+    <ng-container *ngFor="let step of steps; let i = index">
+      <div class="step" [class.active]="isActive(i)">
+        <div class="step-status">
+          <img
+            *ngIf="false"
+            src="../../../../../assets/images/vaild-step.svg"
+            alt="valid-step-icon"
+          />
+          <img
+            src="../../../../../assets/images/invalid-step.svg"
+            alt="invalid-step-icon"
+          />
+        </div>
+        <div class="step-number">
+          {{ step.key }}
+        </div>
+
+        <div class="step-title">
+          {{ step.label }}
+        </div>
+      </div>
+    </ng-container>
+  </div>
+  <div class="stepper-content"></div>
+  <div class="stepper-footer">
+    <button  *ngIf="isFirst()" class="btn btn-cancle">Cancle</button>
+    <button (click)="previousStep()" *ngIf="!isFirst()" class="btn btn-prev">Previous</button>
+    <button (click)="nextStep()" *ngIf="!isLast()" class="btn btn-next">Next</button>
+    <button *ngIf="isLast()" class="btn btn-submit">Submit</button>
+  </div>
+</div>
