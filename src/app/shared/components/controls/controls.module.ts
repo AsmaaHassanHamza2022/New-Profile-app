@@ -12,6 +12,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AutoCompeletComponent } from './auto-compelet/auto-compelet.component';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { HighlightPipe } from './auto-compelet/pipes/highlight.pipe';
+import { CheckBoxComponent } from './check-box/check-box.component';
+import { RadioButtonComponent } from './radio-button/radio-button.component';
 
 
 
@@ -25,6 +27,8 @@ import { HighlightPipe } from './auto-compelet/pipes/highlight.pipe';
     DatePickerRangeComponent,
     AutoCompeletComponent,
     HighlightPipe,
+    CheckBoxComponent,
+    RadioButtonComponent,
     
     
     
@@ -45,6 +49,8 @@ import { HighlightPipe } from './auto-compelet/pipes/highlight.pipe';
     MatSelectModule,
     DatePickerComponent,
     DatePickerRangeComponent,
-    AutoCompeletComponent]
+    AutoCompeletComponent,
+    CheckBoxComponent,
+    RadioButtonComponent]
 })
 export class ControlsModule { }

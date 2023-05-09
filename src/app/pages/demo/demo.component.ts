@@ -36,7 +36,10 @@ export class DemoComponent implements OnInit {
     name:["" ,[Validators.minLength(3),Validators.required ,Validators.pattern(regex.email)]],
     item:['',Validators.required],
     date:['',Validators.required],
-    rangeDate:['']
+    rangeDate:[''],
+    checked:[[1,2],],
+    radioes:[1,]
+
   })
 
   

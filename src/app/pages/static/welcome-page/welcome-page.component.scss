@@ -1,0 +1,21 @@
+@import 'src/assets/styles/colors.scss';
+.welcome-wrapper{
+    width:80%;
+    margin:10px auto;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    padding:20px;
+
+    .heading{
+        text-align: center;
+        h3{
+            color:$primary-light;
+        }
+    }
+    .content{
+        p{
+            margin:20px 0px;
+            line-height: 1.5;
+        }
+    }
+    
+}

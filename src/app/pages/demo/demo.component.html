@@ -1,6 +1,8 @@
 <div class="wrapper">
 <!-- <spinner></spinner> -->
 
+<stepper></stepper>
+<!-- 
     <a class="app-a">hello</a>
 
 <button UploadFile class="app-button">Upload</button>
@@ -8,21 +10,21 @@
     <input class="app-input" />
 </div>
 
-<custom-button (click)="markAsTouchded()"> mark form group toched </custom-button>
-<form style="width:50% ;margin:10px auto" [formGroup]="form">
+<custom-button (click)="markAsTouchded()"> mark form group toched </custom-button> -->
+<!-- <form style="width:50% ;margin:10px auto" [formGroup]="form">
     <input-field [controlName]="'name'" [isRequired]="true" [patternError]="regexErrors.email" [control]="f('name')">
         <custom-input [hasError]="f('name').errors ? true : false" formControlName="name"></custom-input>
     </input-field>
     <input-field [controlName]="'item'" [isRequired]="true" [control]="form.controls['item']">
         <select-box [items]="items" formControlName="item"></select-box>
     </input-field>
-    <!-- <input-password></input-password> -->
-    <!-- <mat-select>
+    <input-password></input-password>
+   <mat-select>
         <mat-option>red2</mat-option>
         <mat-option>red3</mat-option>
         <mat-option>red4</mat-option>
         <mat-option>red5</mat-option>
-    </mat-select> -->
+    </mat-select>
 
     <input-field [controlName]="'date'" [isRequired]="true" [control]="form.controls['date']">
         <date-picker [max]="today" [placeholder]="'select date'" formControlName="date"></date-picker>
@@ -36,9 +38,12 @@
     <auto-compelet [items]="items" formControlName="rangeDate"></auto-compelet>
     </input-field>
 
-    
+    <check-box [items]="items" formControlName="checked"></check-box>
+ 
+    <radio [items]="items" formControlName="radioes"></radio>
     <p>{{form.controls['rangeDate'].value |json}}</p>
 </form>
 
 
+<radio [items]="items"></radio> -->
 </div>

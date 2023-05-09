@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output, forwardRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { Value } from 'src/app/models/frontend';
 
 @Component({
   selector: 'custom-input',
@@ -19,7 +20,7 @@ export class InputComponent implements OnInit, ControlValueAccessor {
 
   @Input() placeholder: string='';
   @Input() hasError:boolean=false;
-  @Output() changed = new EventEmitter<string|any>();
+  @Output() changed = new EventEmitter<Value|any>();
 
   constructor() {}
   ngOnInit(): void {}

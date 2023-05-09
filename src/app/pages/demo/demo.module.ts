@@ -8,6 +8,7 @@ import { ControlsModule } from 'src/app/shared/components/controls/controls.modu
 import { ReactiveFormsModule } from '@angular/forms';
 import { IndicatorsModule } from 'src/app/shared/components/indicators/indicators.module';
 import { FileUploadModule } from 'src/app/shared/components/file-upload/file-upload.module';
+import { StepperModule } from 'src/app/shared/components/stepper/stepper.module';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { FileUploadModule } from 'src/app/shared/components/file-upload/file-upl
     ControlsModule,
     IndicatorsModule,
     ReactiveFormsModule,
-    FileUploadModule
+    FileUploadModule,
+    StepperModule
   ],
   exports:[
     DemoComponent
