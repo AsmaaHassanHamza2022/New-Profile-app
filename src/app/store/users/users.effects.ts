@@ -1,6 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { Init, SignIn, SignOut, Types } from './users.actions';
+import {
+  Init,
+  SignIn,
+  SignOut,
+  Types,
+  createUser,
+  createUserSuccess,
+  updateUser,
+} from './users.actions';
 import {
   Observable,
   catchError,
@@ -18,43 +26,51 @@ import { EmailPasswordCredentials } from './users.model';
 import { environment } from 'src/environments/environment';
 import { SignUp } from './users.actions';
 import { User } from 'src/app/models/backend/user';
-
+import { getAuth } from 'firebase/auth';
+import firebase from 'firebase/app';
+import 'firebase/firestore';
 
 @Injectable()
 export class UserEffects {
+  public authUserData: any;
   constructor(
     private actions$: Actions,
     private afAuth: AngularFireAuth,
     private afs: AngularFirestore,
-    private router: Router
+    private router: Router,
   ) {}
 
-  init$:Observable<any>=createEffect(()=>
-
-  this.actions$.pipe(
-    ofType(Init),
-    switchMap(() => this.afAuth.authState.pipe(take(1))),
-        switchMap(authState => {
-            if (authState) {
-
-                return this.afs.doc<User>(`users/${authState.uid}`).valueChanges().pipe(
-                    take(1),
-                    map(user =>({type:Types.INIT_AUTHORIZED ,user:user,uId:authState.uid})),
-                    catchError(err => of({type:Types.INIT_ERROR ,error:err.message}))
-                );
-
-            } else {
-                return of({type:Types.INIT_UNAUTHORIZED});
-            }
-        })
-  )
-  
-  )
+  init$: Observable<any> = createEffect(() =>
+    this.actions$.pipe(
+      ofType(Init),
+      switchMap(() => this.afAuth.authState.pipe(take(1))),
+      switchMap((authState) => {
+        if (authState) {
+          return this.afs
+            .doc<User>(`users/${authState.uid}`)
+            .valueChanges()
+            .pipe(
+              take(1),
+              map((user) => ({
+                type: Types.INIT_AUTHORIZED,
+                user: user,
+                uId: authState.uid,
+              })),
+              catchError((err) =>
+                of({ type: Types.INIT_ERROR, error: err.message })
+              )
+            );
+        } else {
+          return of({ type: Types.INIT_UNAUTHORIZED });
+        }
+      })
+    )
+  );
 
   signIn$: Observable<any> = createEffect(() =>
     this.actions$.pipe(
       ofType(SignIn),
-      map((action: any) =>{
+      map((action: any) => {
         return action.credential;
       }),
       switchMap((credentials) =>
@@ -64,7 +80,7 @@ export class UserEffects {
             credentials.password
           )
         ).pipe(
-          tap((signInState)=>console.log("After login " ,signInState)),
+          tap((signInState) => console.log('After login ', signInState)),
           switchMap((signInState) =>
             this.afs
               .doc<User>(`users/${signInState?.user?.uid}`)
@@ -127,11 +143,68 @@ export class UserEffects {
       ofType(SignOut),
       switchMap(() =>
         from(this.afAuth.signOut()).pipe(
-          tap(()=>this.router.navigate(['/auth/login'])),
+          tap(() => this.router.navigate(['/auth/login'])),
           map(() => ({ type: Types.SIGN_OUT_SUCCESS })),
           catchError((err) => of({ type: Types.SIGN_OUT_ERROR, error: err }))
         )
       )
     )
   );
+
+  createUser$: Observable<any> = createEffect(() =>
+    this.actions$.pipe(
+      ofType(createUser),
+      map((action) => action.newUserData),
+      tap((user) => {
+        const auth = getAuth();
+        this.authUserData = auth.currentUser;
+        console.log('current user ' +user + ":", this.authUserData);
+        // onAuthStateChanged(auth, (user) => {
+        //   if (user) this.authUserData=user;
+        // console.log("current user from event " ,this.authUserData)
+
+        // });
+      }),
+      // withLatestFrom(this.afAuth.authState.pipe(take(1))),
+      // tap(([user,state])=>{
+      //   debugger
+      //   console.log("user data is" ,user),
+      //   console.log("state data is" ,state)
+      // }),
+      map((user) => ({
+        ...user,
+        uid: this.authUserData?.uid || '',
+        email: this.authUserData?.email || '',
+        created: new Date().toUTCString(),
+      })),
+      switchMap((user: User) =>
+        from(this.afs.collection('users').doc(user.uid).set(user)).pipe(
+          tap(()=>this.router.navigate([`/myProfile/${user.uid}`])),
+          map(() => ({ type: Types.CREATE_USER_SUCCESS, user: user })),
+          catchError((error) =>
+            of({ type: Types.CREATE_USER_ERROR, error: error })
+          )
+        )
+      )
+    )
+  );
+
+  updateUser$: Observable<any> = createEffect(() =>
+    this.actions$.pipe(
+      ofType(updateUser),
+      map((action) => action.user),
+      switchMap((user: User) =>
+        from(this.afs.collection('users').doc(user.uid).set(user)).pipe(
+          tap(()=>this.router.navigate([`/myProfile/${user.uid}`])),
+          map(() => ({ type: Types.UPDATE_USER_SUCCESS, user: user })),
+          catchError((error) =>
+            of({ type: Types.UPDATE_USER_ERROR, error: error })
+          )
+        )
+      )
+    )
+  );
 }
+
+
+

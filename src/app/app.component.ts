@@ -2,11 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {AngularFirestore} from '@angular/fire/compat/firestore'
 import { Store } from '@ngrx/store';
 import { Read } from './store/dictionaries/dictionaries.actions';
-import { Init, SignOut, SignUp } from './store/users/users.actions';
-import { EmailPasswordCredentials } from './store/users/users.model';
+import { Init, SignOut,} from './store/users/users.actions';
 import { Observable } from 'rxjs';
 import { getIsAuthorized } from './store/users/users.selectors';
-import { NotifierService } from './services/notification/notifier.service';
 
 @Component({
   selector: 'app-root',
@@ -17,11 +15,14 @@ export class AppComponent implements OnInit {
 
   public isAuthorized:Observable<any>;
 
+ 
+
   constructor(private fs:AngularFirestore , private store:Store){
   }
 
   ngOnInit(): void {
     this.store.dispatch(Init());
+    this.store.dispatch(Read());
     this.isAuthorized=this.store.select(getIsAuthorized);
 
     //#region 

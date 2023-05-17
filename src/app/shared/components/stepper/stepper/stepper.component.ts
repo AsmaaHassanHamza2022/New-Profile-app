@@ -9,7 +9,13 @@ import { StepperService } from '../Services/stepper.service';
 export class StepperComponent implements OnInit {
   constructor(public stepperService: StepperService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.stepperService.next$.subscribe(()=>{
+      this.stepperService.OnNext();
+    })
+
+
+  }
 
   get steps() {
     return this.stepperService.steps;
@@ -33,10 +39,15 @@ export class StepperComponent implements OnInit {
   }
 
   nextStep(){
-    this.stepperService.OnNext();
+    this.stepperService.check.next("next");
+    // this.stepperService.OnNext();
   }
 
   previousStep(){
     this.stepperService.OnPrevious();
+  }
+  onCompelet(){
+    debugger
+    this.stepperService.check.next("complete");
   }
 }

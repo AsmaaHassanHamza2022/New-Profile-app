@@ -41,6 +41,11 @@ export const  userRedsucers =createReducer(initialState,
     on(UserActions.SignOutSuccess ,(state)=>({...initialState})),
     on(UserActions.SignOutError ,(state ,{error})=>({...initialState ,error:error})),
 
-    
+    on(UserActions.createUser ,(state)=>({...state ,loading:true})),
+    on(UserActions.createUserSuccess ,(state,{user})=>({...state ,entity:user,loading:false })),
+    on(UserActions.createUserError ,(state ,{error})=>({...state ,error:error})),
 
+    on(UserActions.updateUser ,(state)=>({...state ,loading:true})),
+    on(UserActions.updateUserSuccess ,(state,{user})=>({...state ,entity:user,loading:false })),
+    on(UserActions.updateUserError ,(state ,{error})=>({...state ,error:error})),
     )

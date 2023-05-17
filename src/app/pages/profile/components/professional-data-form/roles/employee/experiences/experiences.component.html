@@ -1,0 +1,29 @@
+<div class="experiences">
+    <form [formGroup]="parentForm">
+        <div [formArrayName]="'experiences'" *ngIf="parentForm.controls['experiences']">
+            <ng-container *ngFor="let item of experiences;let i=index ; let isFirst=first">
+                <div class="item" [formGroupName]="i">
+                    <input-field [controlName]="'Company Name'" [isRequired]="true"
+                        [control]="item.controls['companyName']">
+                        <!-- [hasError]="item.controls['companyName'] && item.controls['companyName']?.touched && item.value.controls['companyName']?.errors ? true : false" -->
+                        <custom-input
+                            
+                            formControlName="companyName"></custom-input>
+                    </input-field>
+
+                    <input-field [controlName]="'range-date'" [isRequired]="true" [control]="item.controls['period']">
+                        <date-picker-range formControlName="period"></date-picker-range>
+                    </input-field>
+                    <div *ngIf="!isFirst" class="delete-Action">
+                        <button (click)="deleteExperience(i)" type="button">Delete</button>
+                    </div>
+                </div>
+                
+            </ng-container>
+            
+        </div>
+    </form>
+</div>
+<div class="add-Action">
+    <button (click)="addNewExperince()" type="button">Add </button>
+</div>

@@ -1,0 +1,31 @@
+<div class="Employee-data">
+
+    <form [formGroup]="employeeForm">
+        <input-field [controlName]="'Expected Salary'" [isRequired]="true" [control]="f('expectedSalary')">
+            <custom-input [hasError]="f('expectedSalary').touched &&f('expectedSalary').errors ? true : false"
+                formControlName="expectedSalary"></custom-input>
+        </input-field>
+
+        <experiences [value]="value?.experiences || []" [parentForm]="employeeForm"></experiences>
+
+        <input-field [controlName]="'Specialization'" [isRequired]="true" [control]="f('specialization')">
+            <select-box [items]="dictionaries?.specializations?.controlItems || []"
+                formControlName="specialization"></select-box>
+        </input-field>
+
+        <input-field [controlName]="'qualification'" [isRequired]="true" [control]="f('qualification')">
+            <select-box [items]="dictionaries?.qualifications?.controlItems || []"
+                formControlName="qualification"></select-box>
+        </input-field>
+
+        <input-field [controlName]="'skills'" [isRequired]="true" [control]="f('skills')">
+        <check-box (changed)="catchSelectedSkills($event)" [items]="dictionaries?.skills?.controlItems || []"
+        formControlName="skills"></check-box>
+            <!-- <select-box [items]="dictionaries?.skills?.controlItems || []"
+                formControlName="skills"></select-box> -->
+        </input-field>
+
+
+
+    </form>
+</div>

@@ -1,0 +1,22 @@
+<div class="personal-data">
+    <div class="photo-section">
+        <div class="image-view" [style.backgroundImage]="profilePhotoUrl"></div>
+        <p UploadFile (changed)="getUploadedImgUrl($event)">Upload Profile Photo </p>
+    </div>
+
+    <div class="fields-section">
+
+       <form [formGroup]="personalDataForm">
+        <input-field [controlName]="'Name'" [isRequired]="true" [patternError]="regexErrors.letterAndSpaces" [control]="f('name')">
+        <custom-input [hasError]="f('name').touched &&f('name').errors ? true : false" formControlName="name"></custom-input>
+        </input-field>
+
+        <input-field [controlName]="'Country'" [isRequired]="true" [control]="f('country')">
+        <auto-compelet  [items]="dictionaries?.countries?.controlItems || []" formControlName="country"></auto-compelet>
+        </input-field>
+
+       </form>
+
+
+    </div>
+</div>

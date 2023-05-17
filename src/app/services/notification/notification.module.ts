@@ -12,8 +12,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
   imports: [
     CommonModule,
     MatSnackBarModule
-  ]
-})
+  ]})
 export class NotificationModule {
 
   static forRoot(): ModuleWithProviders<any> {

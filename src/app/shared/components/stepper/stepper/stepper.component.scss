@@ -1,6 +1,7 @@
 
 @import 'src/assets/styles/colors.scss';
 .stepper {
+  overflow: auto;
   &-header {
     display: flex;
     flex-wrap: wrap;
@@ -80,7 +81,7 @@
     display: flex;
     justify-content: space-between;
     width:90%;
-    margin:10px auto;
+    margin:10px auto 50px;
     .btn{
         padding: 10px 20px;
         background-color:sandybrown;

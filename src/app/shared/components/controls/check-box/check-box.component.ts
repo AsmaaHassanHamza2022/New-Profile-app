@@ -18,8 +18,8 @@ import { ControlItem, Value } from 'src/app/models/frontend';
 export class CheckBoxComponent extends InputComponent implements OnInit {
 
   @Input() items:ControlItem[];
-  @Output() override changed: EventEmitter<Value[]|null>;
-  public override value:Value[] |null=[];
+  @Output() override changed: EventEmitter<Value[]>;
+  public override value:Value[]=[];
 
   constructor() {
     super();
@@ -54,7 +54,7 @@ export class CheckBoxComponent extends InputComponent implements OnInit {
       selected.splice(index,1);
     }
     
-    return selected.length ? selected  : null;
+    return selected.length ? selected  : [];
 
   }
 

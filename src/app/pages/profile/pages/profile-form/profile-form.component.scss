@@ -1,0 +1,15 @@
+@import 'src/assets/styles/colors.scss';
+.create-Profile-page {
+  .page-header {
+    text-align: center;
+    color:$primary-dark;
+    font-size: 24px;
+    letter-spacing: 1px;
+  }
+
+  .stepper-content {
+    width: 80%;
+    margin: 20px auto;
+    min-height: 400px;
+  }
+}

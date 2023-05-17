@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable, Subject, filter } from 'rxjs';
 export interface Step {
   key: string;
   label: string;
@@ -9,27 +10,34 @@ export interface ActiveStep extends Step {
 }
 @Injectable()
 export class StepperService {
-  public steps: Step[]=[
-    {
-      key:"1",
-     label:'First Step'
-    },
-    {
-      key:'2',
-     label:'second Step'
-    },
-    {
-      key:'3',
-     label:'third Step'
-    }
-  ];
-  public activeSteps: ActiveStep= {
-    key:"1",
-   label:'First Step',
-   index:0
-  };
+  public steps: Step[]=[];
+  public activeSteps: ActiveStep;
 
-  constructor() {}
+  next = new Subject<boolean>();
+    next$: Observable<boolean>;
+
+    prev = new Subject<void>();
+    prev$ = this.prev.asObservable();
+
+    complete = new Subject<boolean>();
+    complete$: Observable<boolean>;
+
+    cancel = new Subject<void>();
+    cancel$ = this.cancel.asObservable();
+
+    check = new Subject<'next' | 'complete'>();
+    check$ = this.check.asObservable();
+
+
+  constructor() {
+
+    this.next$ = this.next.asObservable().pipe(
+      filter(isOk => isOk)
+  );
+  this.complete$ = this.complete.asObservable().pipe(
+      filter(isOk => isOk)
+  );
+  }
 
   /**
    * init the stepper
@@ -44,8 +52,12 @@ export class StepperService {
    */
 
   OnNext() {
+    
     const index = this.activeSteps?.index + 1;
-    this.activeSteps = { ...this.steps[index], index: index };
+    if(index != this.steps.length){
+      this.activeSteps = { ...this.steps[index], index: index };
+
+    }
   }
 
   /**
@@ -54,6 +66,9 @@ export class StepperService {
 
   OnPrevious() {
     const index = this.activeSteps?.index - 1;
-    this.activeSteps = { ...this.steps[index], index: index };
+    if(index >=0){
+      this.activeSteps = { ...this.steps[index], index: index };
+
+    }
   }
 }

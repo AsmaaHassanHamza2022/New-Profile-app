@@ -1,0 +1,15 @@
+<div class="recuiter-form">
+    <form [formGroup]="recruiterDataForm">
+        <input-field [controlName]="'companyName'" [isRequired]="true" [patternError]="regexErrors.letterAndSpaces"
+            [control]="f('companyName')">
+            <custom-input [hasError]="f('companyName').touched &&f('companyName').errors ? true : false"
+                formControlName="companyName"></custom-input>
+        </input-field>
+
+        <input-field [controlName]="'employeesCount'" [isRequired]="true" [patternError]="regexErrors.numbers"
+        [control]="f('employeesCount')">
+        <custom-input [hasError]="f('employeesCount').touched &&f('employeesCount').errors ? true : false"
+            formControlName="employeesCount"></custom-input>
+    </input-field>
+    </form>
+</div>

@@ -1,0 +1,32 @@
+@import "src/assets/styles/colors.scss";
+.experiences {
+  form {
+    .item{
+        padding: 20px;
+        margin: 20px 0px;
+        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    }
+  
+  }
+  .delete-Action {
+    display: flex;
+    justify-content: flex-end;
+    button {
+      background-color: $error;
+      color: #fff;
+      padding: 10px 30px;
+      border-radius: 20px;
+    }
+  }
+}
+.add-Action {
+  display: flex;
+  justify-content: flex-end;
+  button {
+    background-color: $primary-dark;
+    color: #fff;
+    padding: 10px 30px;
+    border-radius: 20px;
+    margin: 10px 0px;
+  }
+}

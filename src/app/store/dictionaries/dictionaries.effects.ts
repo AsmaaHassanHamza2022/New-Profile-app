@@ -18,7 +18,7 @@ const documentToItem = (x: DocumentChangeAction<any>): Item => {
 };
 
 const itemToControlItem = (x: Item): ControlItem => ({
-    value: x.id,
+    value:x.value || x.id,
     label: x.name,
     icon: x.icon
 });
@@ -45,7 +45,7 @@ export class DictionariesEffects {
                     take(1),
                     map(items => items.map(x => documentToItem(x)))
                 ),
-                this.afs.collection('specializations').snapshotChanges().pipe(
+                this.afs.collection('specifications').snapshotChanges().pipe(
                     take(1),
                     map(items => items.map(x => documentToItem(x)))
                 ),
@@ -68,14 +68,14 @@ export class DictionariesEffects {
                 )
                 )
             ).pipe(
-                map(([roles, specializations, qualifications, skills]) => {
+                map(([roles, specializations, qualifications, skills ,countries]) => {
 
                     const dictionaries: Dictionaries = {
                         roles: addDictionary(roles),
                         specializations: addDictionary(specializations),
                         qualifications: addDictionary(qualifications),
                         skills: addDictionary(skills),
-                        countries:addDictionary(skills)
+                        countries:addDictionary(countries)
                     };
 
                     return  DictinaliesActions.Read_Success({dictinaries:dictionaries});

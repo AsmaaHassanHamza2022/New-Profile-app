@@ -5,23 +5,33 @@ export interface Employee {
     expectedSalary: number;
     experiences: Experience[];
 }
+export interface EmployeeForm {
+    specialization: string;
+    skills: string[];
+    qualification: string;
+    expectedSalary: number;
+    experiences: Experience[];
+}
 
 interface Specialization {
     id: string;
     name: string;
+    value?:string;
 }
 
 interface Skill {
     id: string;
     name: string;
+    value?:string;
 }
 
 interface Qualification {
     id: string;
     name: string;
+    value?:string;
 }
 
-interface Experience {
+export interface Experience {
     companyName: string;
     period: Period;
 }

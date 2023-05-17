@@ -1,0 +1,22 @@
+<div class="professional-form">
+    <div class="role">
+        <form [formGroup]="professionalFormData">
+            <input-field [controlName]="'Your Role'" [isRequired]="true"  [control]="f('roleId')">
+            <radio formControlName="roleId" [items]="dictionaries?.roles?.controlItems || []"></radio>
+            </input-field>
+
+            <input-field [controlName]="'Tell More about your self..'" [isRequired]="true" [patternError]="regexErrors.letterAndSpaces" [control]="f('desc')">
+            <custom-input [hasError]="f('desc').touched &&f('desc').errors ? true : false" formControlName="desc"></custom-input>
+            </input-field>
+
+            <ng-container [ngSwitch]="professionalFormData.controls['roleId'].value">
+                <recuiter *ngSwitchCase="'recruiter'" [value]="value?.role || null" [perantForm]="professionalFormData"></recuiter>
+                <employee  *ngSwitchCase="'employee'" [value]="value?.role || null" [dictionaries]="dictionaries"  [perantForm]="professionalFormData"></employee>
+            </ng-container>
+
+        </form>
+
+    </div>
+    
+
+</div>

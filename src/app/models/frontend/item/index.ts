@@ -4,4 +4,5 @@ export interface Item {
     id: string;
     name: string;
     icon?: Icon;
+    value?:string
 }

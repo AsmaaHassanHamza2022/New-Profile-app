@@ -2,9 +2,7 @@ import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CustomNotificationComponent } from './components/custom-notification/custom-notification.component';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class NotifierService {
 
   constructor(private snackBar: MatSnackBar) { }
@@ -13,6 +11,8 @@ export class NotifierService {
     this.snackBar.openFromComponent(CustomNotificationComponent, {
         duration: 3000,
         data: { message },
+        horizontalPosition:'left',
+        verticalPosition:'bottom',
         panelClass: ['mat-snackbar_error']
     });
 }
