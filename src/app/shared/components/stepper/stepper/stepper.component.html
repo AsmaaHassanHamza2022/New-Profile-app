@@ -28,7 +28,7 @@
     
   </div>
   <div class="stepper-footer">
-    <button  *ngIf="isFirst()" class="btn btn-cancle">Cancle</button>
+    <button  *ngIf="isFirst()" class="btn btn-cancle">cancle</button>
     <button (click)="previousStep()" *ngIf="!isFirst()" class="btn btn-prev">Previous</button>
     <button (click)="nextStep()" *ngIf="!isLast()" class="btn btn-next">Next</button>
     <button (click)="onCompelet()"  *ngIf="isLast()" class="btn btn-submit">Submit</button>

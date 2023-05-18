@@ -1,16 +1,20 @@
-import { ActionReducerMap, createFeatureSelector } from "@ngrx/store";
+import { ActionReducerMap} from "@ngrx/store";
 import { ProfileFormData } from "./profileForm.model";
 import { userReducers } from "./profileForm.reducers";
+import { UserState, userReducer } from "./user/user.reducers";
+import { UserEffect } from "./user/user.effect";
 
 export interface ProfileState {
     form:ProfileFormData;
-    // user: fromUser.UserState;
+    user:UserState;
 }
 
 export const reducers: ActionReducerMap<ProfileState> = {
     form:userReducers,
-    // user: fromUser.reducer
+    user:userReducer
 };
 
-export const effects: any[] = [];
+export const effects: any[] = [
+    UserEffect
+];
 

@@ -1,0 +1,28 @@
+@import 'src/assets/styles/colors.scss';
+.employee-card{
+    border:1px solid #ddd;
+    // width:50%;
+    margin:20px;
+    .card-header{
+        img{
+            width:100%;
+        }
+    }
+    .card-body{
+        text-align: center;
+
+
+    }
+    .card-footer{
+        display: flex;
+        justify-content: flex-end;
+        padding: 10px;
+        margin:10px 0px;
+      
+        button{
+            color:$primary-light;
+            text-decoration: underline;
+        }
+
+    }
+}

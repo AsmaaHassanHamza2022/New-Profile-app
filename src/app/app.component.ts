@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {AngularFirestore} from '@angular/fire/compat/firestore'
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
 import { Read } from './store/dictionaries/dictionaries.actions';
 import { Init, SignOut,} from './store/users/users.actions';
-import { Observable } from 'rxjs';
-import { getIsAuthorized } from './store/users/users.selectors';
+import { Observable, filter, take } from 'rxjs';
+import { getIsAuthorized, getUser, getUserState } from './store/users/users.selectors';
+import { table } from 'console';
 
 @Component({
   selector: 'app-root',
@@ -14,6 +15,7 @@ import { getIsAuthorized } from './store/users/users.selectors';
 export class AppComponent implements OnInit {
 
   public isAuthorized:Observable<any>;
+  public user$:Observable<any>;
 
  
 
@@ -21,9 +23,16 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
+     // get user data from 
+    this.user$=this.store.pipe(select(getUser))
     this.store.dispatch(Init());
-    this.store.dispatch(Read());
+
+    this.store.pipe(select(getUserState),filter((state)=> !!state?.uid),take(1)).subscribe(()=>{
+      this.store.dispatch(Read());
+
+    })
     this.isAuthorized=this.store.select(getIsAuthorized);
+
 
     //#region 
     // const credential:EmailPasswordCredentials={

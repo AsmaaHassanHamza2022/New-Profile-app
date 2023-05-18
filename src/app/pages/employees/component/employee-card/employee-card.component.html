@@ -1,0 +1,16 @@
+<div class="employee-card">
+    <div class="card-header">
+     <img [src]="employee.photoURL ==''? '../../../../../assets/images/profile-photo-placeholder.jpg' :employee.photoURL" alt="profile-dummy-img"/>
+    </div>
+    <div class="card-body">
+        <h4>Name : <span>{{employee.name}}</span></h4>
+        <h4>Country code :<span>{{employee.country}}</span></h4>
+        <h4>About :<span>{{employee.about }}</span></h4>
+
+    </div>
+
+    <div class="card-footer">
+        <button (click)="ReadMore(employee.uid)">Read more</button>
+
+    </div>
+</div>

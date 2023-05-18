@@ -1,1 +1,69 @@
-<p>display-profile-data works!</p>
+
+
+
+<div *ngIf="!(loading$ |async) " class="user-profile-preview">
+    <div class="personal-data">
+        <div class="img-section">
+            <img [src]="profileData.photoURL =='' ? '../../../../../assets/images/profile-photo-placeholder.jpg' :profileData.photoURL" alt="user-profile-image"/>
+        </div>
+        <div class="personal-Data-content">
+            <div class="edit-button" *ngIf="isOwnProfile$ |async">
+                <button [routerLink]="['/myProfile/edit']" class="app-button"> Edit Profile Data</button>
+            </div>
+            <h3>personal Data </h3>
+            <p> name : <span>{{profileData.name}}</span></p>
+            <p>About : <span>{{profileData.about}}</span></p>
+            <p> Country Code : <span>{{profileData.country}}</span></p>
+
+        </div>
+    </div>
+    <div class="divider"></div>
+
+    <div class="professional-data">
+        <h3>professional Data </h3>
+        <ng-container [ngSwitch]="profileData.roleId">
+            <section *ngSwitchCase="'employee'" class="employee">
+                <p>- Your Expected Salary : <span>{{profileData.role.expectedSalary}} </span></p>
+                <p>- Your Specialization <span>{{profileData.role.specialization.name}}</span></p>
+                <p>- Your Qualification <span>{{profileData.role.qualification.name}}</span></p>
+                 <div class="skills">
+                    <p>- Your Skills :</p>
+                    <ul >
+                        <li *ngFor="let skill of profileData.role.skills">{{skill.name}}</li>
+                    </ul>
+                 </div>
+
+                 <div class="experiences">
+                    <p>- Your Experiences :</p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Company Name</th>
+                                <th>Start Date</th>
+                                <th>End Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let experience of profileData.role.experiences">
+                                <td>{{experience.companyName}}</td>
+                                <td>{{experience.period.from |date}}</td>
+                                <td>{{experience.period.to | date}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                 </div>
+
+            </section>
+
+            <section class="recuiter" *ngSwitchCase="'recruiter'">
+                <p>Company Name  : <span>{{profileData.role.companyName}}</span></p>
+                <p>Employees Number : <span>{{profileData.role.employeesCount}}</span></p>
+
+            </section>
+        </ng-container>
+        
+    </div>
+
+</div>
+
+<spinner *ngIf="loading$ |async "></spinner>
