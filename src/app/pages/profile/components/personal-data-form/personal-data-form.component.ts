@@ -39,7 +39,7 @@ export class PersonalDataFormComponent implements OnInit ,OnDestroy{
     this.stepperService.check$.subscribe((type)=>{
       if(this.personalDataForm.invalid){
         markFormGroupTouched(this.personalDataForm);
-        this.notifier.error("Please Full All Required Feilds ")
+        // this.notifier.error("Please Full All Required Feilds ")
         this.stepperService[type].next(false);
 
       }else{
