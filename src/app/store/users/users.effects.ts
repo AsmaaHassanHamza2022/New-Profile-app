@@ -29,6 +29,7 @@ import { User } from 'src/app/models/backend/user';
 import { getAuth } from 'firebase/auth';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
+import { NotifierService } from 'src/app/services/notification/notifier.service';
 
 @Injectable()
 export class UserEffects {
@@ -38,6 +39,7 @@ export class UserEffects {
     private afAuth: AngularFireAuth,
     private afs: AngularFirestore,
     private router: Router,
+    private notificationService:NotifierService
   ) {}
 
   init$: Observable<any> = createEffect(() =>
@@ -98,6 +100,8 @@ export class UserEffects {
               )
           ),
           catchError((err) => {
+            debugger
+            this.notificationService.error("Enter Valid Email and Password , If You new user please sign up")
             return of({ type: Types.SIGN_IN_EMAIL_ERROR, error: err });
           })
         )
@@ -117,12 +121,12 @@ export class UserEffects {
           )
         ).pipe(
           tap(() => {
-            this.afAuth.currentUser.then((currentUser) => {
-              currentUser?.sendEmailVerification(
-                environment.firebase.actionCodeSettings
-              );
-            });
-            // this.router.navigate(['/auth/email-confirm']);
+            // this.afAuth.currentUser.then((currentUser) => {
+            //   currentUser?.sendEmailVerification(
+            //     environment.firebase.actionCodeSettings
+            //   );
+            // });
+            this.router.navigate(['/']);  //auth/confirm-registration
           })
         )
       ),
@@ -145,7 +149,9 @@ export class UserEffects {
         from(this.afAuth.signOut()).pipe(
           tap(() => this.router.navigate(['/auth/login'])),
           map(() => ({ type: Types.SIGN_OUT_SUCCESS })),
-          catchError((err) => of({ type: Types.SIGN_OUT_ERROR, error: err }))
+          catchError((err) => {
+            return of({ type: Types.SIGN_OUT_ERROR, error: err })
+          })
         )
       )
     )

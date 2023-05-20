@@ -7,6 +7,7 @@ import { effects, reducers } from './store';
 import { EffectsModule } from '@ngrx/effects';
 import { EmployeesListComponent } from './employees-list/employees-list.component';
 import { EmployeeCardComponent } from './component/employee-card/employee-card.component';
+import { IndicatorsModule } from 'src/app/shared/components/indicators/indicators.module';
 
 
 @NgModule({
@@ -17,7 +18,7 @@ import { EmployeeCardComponent } from './component/employee-card/employee-card.c
   imports: [
     CommonModule,
     EmployeesRoutingModule,
-
+    IndicatorsModule,
     StoreModule.forFeature('employeesList', reducers),
     EffectsModule.forFeature(effects),
   ]

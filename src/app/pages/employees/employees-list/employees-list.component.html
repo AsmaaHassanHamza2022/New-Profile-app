@@ -1,3 +1,5 @@
 <div class="employees-list">
    <employee-card class="item" *ngFor="let employee of (employeesList$ |async) || []" [employee]="employee" ></employee-card>
 </div>
+
+<spinner *ngIf="loading$ |async"></spinner>

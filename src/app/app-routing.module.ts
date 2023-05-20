@@ -7,6 +7,7 @@ const routes: Routes = [
   {path:'static' ,loadChildren:()=>import('./pages/static/static.module').then((m)=>m.StaticModule)},
   {path:'myProfile' ,loadChildren:()=>import('./pages/profile/profile.module').then((m)=>m.ProfileModule) },
   {path:'employees',loadChildren:()=>import('./pages/employees/employees.module').then((m)=>m.EmployeesModule)},
+  {path:'jobs',loadChildren:()=>import('./pages/jobs/jobs.module').then((m)=>m.JobsModule)},
   {path:'' ,pathMatch:'full' ,redirectTo:'static/welcome'},
   {path:'**' ,pathMatch:'full' ,redirectTo:'static/404'},
   

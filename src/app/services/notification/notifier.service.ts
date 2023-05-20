@@ -21,6 +21,8 @@ success(message: string): void {
     this.snackBar.openFromComponent(CustomNotificationComponent, {
         duration: 3000,
         data: { message },
+        horizontalPosition:'left',
+        verticalPosition:'bottom',
         panelClass: ['mat-snackbar_success']
     });
 }

@@ -47,7 +47,6 @@ export class StepperComponent implements OnInit {
     this.stepperService.OnPrevious();
   }
   onCompelet(){
-    debugger
     this.stepperService.check.next("complete");
   }
 }

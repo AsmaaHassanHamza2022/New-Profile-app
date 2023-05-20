@@ -17,11 +17,9 @@ export const initialState: ListState = {
 
 export const  EmployeesReducer =createReducer(initialState,
     on(ReadEmployeesList,(state)=>{
-        debugger
         return {...state ,loading:true}
     }),
     on(ReadEmployeesListSuccess,(state,{employees})=>{
-        debugger
         return ({...state ,items:employees,loading:false})
     }),
     on(ReadEmployeesListError,(state,{error})=>({...state ,loading:false,error:error})),

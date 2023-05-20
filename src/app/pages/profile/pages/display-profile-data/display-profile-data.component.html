@@ -2,14 +2,15 @@
 
 
 <div *ngIf="!(loading$ |async) " class="user-profile-preview">
+    <div class="edit-button" *ngIf="isOwnProfile$ |async">
+        <button [routerLink]="['/myProfile/edit']" class="app-button"> Edit Profile Data</button>
+    </div>
     <div class="personal-data">
         <div class="img-section">
             <img [src]="profileData.photoURL =='' ? '../../../../../assets/images/profile-photo-placeholder.jpg' :profileData.photoURL" alt="user-profile-image"/>
         </div>
         <div class="personal-Data-content">
-            <div class="edit-button" *ngIf="isOwnProfile$ |async">
-                <button [routerLink]="['/myProfile/edit']" class="app-button"> Edit Profile Data</button>
-            </div>
+           
             <h3>personal Data </h3>
             <p> name : <span>{{profileData.name}}</span></p>
             <p>About : <span>{{profileData.about}}</span></p>

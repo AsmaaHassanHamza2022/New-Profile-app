@@ -1,0 +1,15 @@
+<div class="jobs-page">
+    <div class="job-page-title">
+      <h3> Available Jobs  </h3>
+    </div>
+    <div class="search-box">
+        <custom-input (changed)="onSearchByTitle($event)" [placeholder]="'Search By Job Title'"></custom-input>
+    </div>
+    <div class="add-job" *ngIf="allowEditing$ |async">
+        <button (click)="onAddNewJob()" class="btn new">Create New Job</button>
+    </div>
+    <div class="job-page-content">
+     <job-item [allowEditing]="allowEditing$ |async"  (DeleteJob)="onDeleteJob($event)" (EditJob)="onEditJob($event)" [job]="job" *ngFor="let job of  filteredJobList$ |async"></job-item>
+    </div>
+</div>
+<spinner *ngIf="loading$ |async"></spinner>

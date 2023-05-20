@@ -18,6 +18,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from 'src/environments/environment';
 import { NotificationModule } from './services/notification/notification.module';
+import { FooterComponent } from './components/footer/footer.component';
 
 const APP_DATE_FORMATS: MatDateFormats = {
     parse: {
@@ -31,7 +32,7 @@ const APP_DATE_FORMATS: MatDateFormats = {
     }
 };
 @NgModule({
-  declarations: [AppComponent, HeaderComponent],
+  declarations: [AppComponent, HeaderComponent,FooterComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

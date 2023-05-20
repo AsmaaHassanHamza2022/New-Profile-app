@@ -19,3 +19,15 @@ export const getIsAuthorized =createSelector(
     getUserState,
     (state)=>!!state.uid
 )
+
+export const getUserRole =createSelector(
+    getUserState,
+    (state)=>state.entity && state.entity.roleId
+
+)
+
+export const IsRecuiter =createSelector(
+    getUserState,
+    (state)=>state.entity && state.entity.roleId !== 'employee'
+
+)

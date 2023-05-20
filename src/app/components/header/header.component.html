@@ -1,12 +1,69 @@
 <div class="header">
-    <div class="header__title" [routerLink]="['/']">My Profile App</div>
-    <div class="header__navigation">
-        <a class="app-a" *ngIf="!IsAuthorized" routerLink="/auth/login" routerLinkActive="app-a_active">Login</a>
-        <a class="app-a" *ngIf="!IsAuthorized" routerLink="/auth/register" routerLinkActive="app-a_active">Register</a>
-        <a class="app-a" *ngIf="IsAuthorized" (click)="onProfileNavigate()"  routerLinkActive="app-a_active">Profile</a>
+    <div class="topnav" id="myTopnav">
+        <div class="header__title" [routerLink]="['/']">Link</div>
 
-        <a class="app-a" *ngIf="IsAuthorized" (click)="signOut()" routerLinkActive="app-a_active">Logout</a>
+        <div class="nav-links">
+            <a class="app-a" *ngIf="!IsAuthorized" routerLink="/auth/login" routerLinkActive="app-a_active">Login</a>
+            <a class="app-a" *ngIf="!IsAuthorized" routerLink="/auth/register"
+                routerLinkActive="app-a_active">Register</a>
+            <a class="app-a" *ngIf="IsAuthorized" (click)="onProfileNavigate()"
+                routerLinkActive="app-a_active">Profile</a>
+            <a class="app-a" *ngIf="IsAuthorized" routerLink="/employees" routerLinkActive="app-a_active">Employees</a>
+            <a class="app-a" *ngIf="IsAuthorized" routerLink="/jobs" routerLinkActive="app-a_active">Jobs</a>
 
-        <a class="app-a" routerLink="demo" routerLinkActive="app-a_active">Demo</a>
+            <a class="app-a" *ngIf="IsAuthorized" (click)="signOut()" routerLinkActive="app-a_active">Logout</a>
+            <!-- <a class="app-a" routerLink="demo" routerLinkActive="app-a_active">Demo</a> -->
+            <a class="icon" (click)="myFunction()">
+                <i class="fa fa-bars"></i>
+            </a>
+        </div>
     </div>
+
+    <div class="v-nav-links" id="vLinks">
+        <a
+        class="app-a"
+        *ngIf="!IsAuthorized"
+        routerLink="/auth/login"
+        routerLinkActive="app-a_active"
+        >Login</a
+      >
+      <a
+        class="app-a"
+        *ngIf="!IsAuthorized"
+        routerLink="/auth/register"
+        routerLinkActive="app-a_active"
+        >Register</a
+      >
+      <a
+        class="app-a"
+        *ngIf="IsAuthorized"
+        (click)="onProfileNavigate()"
+        routerLinkActive="app-a_active"
+        >Profile</a
+      >
+      <a
+        class="app-a"
+        *ngIf="IsAuthorized"
+        routerLink="/employees"
+        routerLinkActive="app-a_active"
+        >Employees</a
+      >
+      <a
+        class="app-a"
+        *ngIf="IsAuthorized"
+        routerLink="/jobs"
+        routerLinkActive="app-a_active"
+        >Jobs</a
+      >
+    
+      <a
+        class="app-a"
+        *ngIf="IsAuthorized"
+        (click)="signOut()"
+        routerLinkActive="app-a_active"
+        >Logout</a
+      >
+      <!-- <a class="app-a" routerLink="demo" routerLinkActive="app-a_active">Demo</a> -->
+     
+      </div>
 </div>

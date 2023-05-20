@@ -35,7 +35,7 @@ export class ProfessionalDataFormComponent implements OnInit ,OnDestroy {
     this.stepperService.check$.pipe(takeUntil(this.endSub$)).subscribe((type)=>{
      if(this.professionalFormData.invalid){
        markFormGroupTouched(this.professionalFormData);
-       this.notifier.error("Please Full All Required Feilds ")
+      //  this.notifier.error("Please Full All Required Feilds ")
        this.stepperService[type].next(false);
      }else{
       this.SendProfessionalData.emit(this.professionalFormData.value);

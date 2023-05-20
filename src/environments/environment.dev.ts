@@ -9,7 +9,7 @@ export const environment = {
         appId: "1:919145805120:web:92876ab82b116dd252f6a5",
         measurementId: "G-NY1NM3RVKG",
         actionCodeSettings: {
-            url: 'http://localhost:4200/demo',
+            url: 'http://localhost:4200/static/welcome',
             handleCodeInApp: true
         }
       },

@@ -20,10 +20,25 @@ export class HeaderComponent implements OnInit {
     this.SignOut.emit();
 
   }
+ 
 
   onProfileNavigate(): void {
     const path = this.user ? this.user.uid : 'new';
     this.router.navigate(['/myProfile', path]);
+}
+
+ /* Toggle between adding and removing the "responsive" class to topnav when the user clicks on the icon */
+ public myFunction(){
+  var x = document.getElementById("myTopnav") as HTMLElement;
+  var verticalLinks=document.getElementById('vLinks') as HTMLElement;
+  if (x.className === "topnav" && verticalLinks.className =='v-nav-links') {
+    x.className += " responsive";
+    verticalLinks.className += " responsive";
+  } else {
+    x.className = "topnav";
+    verticalLinks.className= "v-nav-links";
+
+  }
 }
 
 }

@@ -12,3 +12,31 @@
         color: $on-primary;
     }
 }
+
+.btn{
+    padding: 10px 20px;
+    background-color:sandybrown;
+    border-radius: 15px;
+    color:#fff;
+
+    &.btn-submit,&.btn-next{
+        background-color:$stepper-actions;
+    }
+    &.btn-cancle,&.btn-prev{
+        background-color:$stepper-primary;
+    }
+    &.edit{
+        background-color:$secondary;
+        min-width: 150px;
+    }
+    &.delete{
+        background-color:$error;
+        min-width: 150px;
+
+    }
+    &.new{
+        background-color:$stepper-primary;
+
+    }
+    
+}

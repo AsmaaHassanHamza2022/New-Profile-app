@@ -1,0 +1,25 @@
+<div class="job-form">
+    <div class="title">
+        <h4>Add New Job</h4>
+    </div>
+    <form [formGroup]="jobForm">
+        <input-field [controlName]="'title'" [isRequired]="true" [patternError]="regexErrors.letterAndSpaces" [control]="f('title')">
+        <custom-input [hasError]="f('title').touched &&f('title').errors ? true : false" formControlName="title"></custom-input>
+        </input-field>
+
+        <input-field [controlName]="'desc'" [isRequired]="true" [patternError]="regexErrors.letterAndSpaces" [control]="f('desc')">
+        <custom-input [hasError]="f('desc').touched &&f('desc').errors ? true : false" formControlName="desc"></custom-input>
+        </input-field>
+
+        <input-field [controlName]="'salary'" [isRequired]="true" [patternError]="regexErrors.numbers" [control]="f('salary')">
+        <custom-input [hasError]="f('salary').touched &&f('salary').errors ? true : false" formControlName="salary"></custom-input>
+        </input-field>
+
+        <div class="actions">
+            <button  (click)="onSubmit()" [disabled]="jobForm.invalid" class="btn new">
+                Save
+            </button>
+        </div>
+    </form>
+    
+</div>

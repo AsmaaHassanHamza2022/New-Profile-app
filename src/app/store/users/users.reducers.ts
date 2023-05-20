@@ -31,7 +31,6 @@ export const  userRedsucers =createReducer(initialState,
     on(UserActions.SignIn ,(state)=>({...state,loading:true})),
     on(UserActions.SignInSuccess,(state 
         ,{user ,uId})=>{
-            debugger
             return {...state ,uid:uId ,loading:false ,entity:user ,error:null};
         }),
     on(UserActions.SignInError,(state,{error})=>({...state ,error:error ,loading:false})),

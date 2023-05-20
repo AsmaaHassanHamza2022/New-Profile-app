@@ -1,0 +1,26 @@
+@import 'src/assets/styles/colors.scss';
+.jobs-page{
+    width:90%;
+    margin:10px auto;
+    .job-page-title{
+        text-align: center;
+        margin:10px 0px;
+
+        font-size: 20px;
+        color:$primary-dark;
+    }
+    .search-box{
+        width:40%;
+        margin:10px auto;
+        @media (max-width:687px){
+        width:80%;
+
+        }
+    }
+    .add-job{
+        display: flex;
+        justify-content: flex-end;
+        margin:15px;
+    }
+    .job-page-content{}
+}

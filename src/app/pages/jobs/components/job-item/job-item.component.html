@@ -1,0 +1,21 @@
+<div class="job-item">
+    <div class="content">
+        <div class="job-title">
+           <h3>{{job.title}}</h3>
+           <p>created Date :<span>{{job.created | date}}</span></p>
+        </div>
+        <div class="job-description">
+          <p>{{job.desc}}</p>
+          <p class="Expected-salary">Salary :<span>{{job.salary | currency}}</span></p>
+        </div>
+
+    </div>
+    <div class="actions" *ngIf="allowEditing">
+        <div class="actions-btns">
+            <button (click)="onEdit(job)" class="btn edit">Edit </button>
+            <button (click)="onDelete(job.id)" class="btn delete">Delete</button>
+        </div>
+        
+    </div>
+
+</div>

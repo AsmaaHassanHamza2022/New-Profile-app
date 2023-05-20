@@ -1,0 +1,19 @@
+@import 'src/assets/styles/colors.scss';
+.job-form{
+    .title{
+        h4{
+            color:$primary-dark;
+            font-size: 20px;
+            margin:10px 0px;
+
+        }
+
+    }
+    form{
+        .actions{
+            display: flex;
+            justify-content: flex-end;
+
+        }
+    }
+}
