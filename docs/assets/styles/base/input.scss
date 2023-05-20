@@ -1,0 +1,43 @@
+@import '../colors.scss';
+.app-input {
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, .25);
+    height: 36px;
+    line-height: 18px;
+    padding: 0 15px;
+    outline: none;
+
+    &:focus {
+        border: 1px solid $primary-dark;
+    }
+
+    &:disabled {
+        background: rgba(0, 0, 0, .05);
+        border: 1px solid rgba(0, 0, 0, .15);
+        color: rgba(0,0,0,.38);
+    }
+
+    &.invalid_Input{
+        border: 1px solid $error;
+    }
+    &.valid_Input{
+        border: 1px solid rgba(0, 0, 0, .25);
+    }
+
+}
+
+.required_Field{
+    color:$error ;
+}
+.input_label{
+    margin:10px 0px;
+    font-size: 16px;
+}
+// .input_validation_error{
+//     display:inline-block;
+//     font-size:14px;
+//     margin:3px 0px;
+//     color:$error;
+    
+// }
