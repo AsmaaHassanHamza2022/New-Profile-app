@@ -1,3 +1,5 @@
-<header [user]="user$ | async" [IsAuthorized]="isAuthorized |async" (SignOut)="logout()"></header>
-<router-outlet></router-outlet>
+<div class="content">
+    <header [user]="user$ | async" [IsAuthorized]="isAuthorized |async" (SignOut)="logout()"></header>
+    <router-outlet></router-outlet>
+</div>
 <footer></footer>
